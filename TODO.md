@@ -1,0 +1,1 @@
+- Maybe have the basic stuff like nodemon, husky, lint-staged, etc... at the top level of the repo
