@@ -8,6 +8,10 @@ const { port, env } = config;
 const startServer = async () => {
   const app = express();
 
+  /* eslint-disable global-require */
+  /* eslint-disable @typescript-eslint/no-var-requires */
+  await require('./loaders').default({ expressApp: app });
+
   app
     .listen(port, () =>
       Logger.info(`listening on port ${port}, on environment ${env}`),

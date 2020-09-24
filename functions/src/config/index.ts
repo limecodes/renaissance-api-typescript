@@ -4,4 +4,7 @@ export default {
   logs: {
     level: process.env.LOG_LEVEL || 'silly',
   },
+  api: {
+    prefix: '/v1/api',
+  },
 };
