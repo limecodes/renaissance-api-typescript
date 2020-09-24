@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER:-renaissance}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-renaissance}
+    ports:
+      - ${MYSQL_HOST:-127.0.0.1}:${MYSQL_PORT:-7000}:3306
+volumes:
+  db:
