@@ -11,7 +11,7 @@ def generate_random_value(length):
   return ''.join(random.choice(letters) for i in range(length))
 
 # Later, don't forget envApp
-env = envDocker = envDatabase = ""
+env = envDocker = envDatabase = envApp = ""
 
 # Later, use a variable to select the environment for CI
 with open('./envs/docker/local') as fp:
@@ -20,11 +20,15 @@ with open('./envs/docker/local') as fp:
 with open('./envs/database/local') as fp:
   envDatabase = fp.read()
 
+with open('./envs/app/local') as fp:
+  envApp = fp.read()
+
 envDatabase += "MYSQL_ROOT_PASSWORD=%s\n" % (generate_random_value(15))
 envDatabase += "MYSQL_PASSWORD=%s\n" % (generate_random_value(15))
 
 env += envDocker
 env += envDatabase
+env += envApp
 
 # Later, import the firebase certificate values
 
