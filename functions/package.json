@@ -4,7 +4,7 @@
     "build": "tsc",
     "serve": "yarn build && firebase emulators:start --only functions",
     "shell": "yarn build && firebase functions:shell",
-    "start": "npm run shell",
+    "start": "DOTENV_CONFIG_PATH=$PWD/../.env nodemon -- -r dotenv/config ./src/server.ts",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
     "format": "prettier . --write",
@@ -18,14 +18,18 @@
   },
   "main": "build/index.js",
   "dependencies": {
+    "express": "^4.17.1",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.6.1"
   },
   "devDependencies": {
+    "@types/express": "^4.17.8",
     "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.2",
     "@types/supertest": "^2.0.10",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
+    "dotenv": "^8.2.0",
     "eslint": "^7.9.0",
     "eslint-config-airbnb-typescript": "^10.0.0",
     "eslint-config-prettier": "^6.11.0",
@@ -34,9 +38,11 @@
     "husky": "^4.3.0",
     "jest": "^26.4.2",
     "lint-staged": "^10.4.0",
+    "nodemon": "^2.0.4",
     "prettier": "^2.1.2",
     "supertest": "^4.0.2",
     "ts-jest": "^26.4.0",
+    "ts-node": "^9.0.0",
     "typescript": "^3.8.0"
   },
   "husky": {
