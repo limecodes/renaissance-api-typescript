@@ -18,3 +18,33 @@ jobs:
       - name: Run tests
         working-directory: ./functions
         run: yarn test
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+      - name: install
+        working-directory: ./functions
+        run: yarn install
+      - name: Run lint
+        working-directory: ./functions
+        run: yarn lint
+      - name: Run test
+        working-directory: ./functions
+        run: yarn test
+      - name: Run build
+        working-directory: ./functions
+        run: yarn build
+      # - name: Deploy to CF
+      #   uses: w9jds/firebase-action@master
+      #   with:
+      #     args: deploy --only functions
+      #   env:
+      #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

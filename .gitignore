@@ -1,4 +1,4 @@
 *.save
 .env
-.env.example
-
+.env.*
+*.log
