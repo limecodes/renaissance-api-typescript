@@ -2,13 +2,12 @@ import { Application, Request, Response } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
-// import config from '../config'
+import config from '../config';
+import routes from '../api';
 
-// const {
-//   api: {
-//     prefix
-//   }
-// } = config
+const {
+  api: { prefix },
+} = config;
 
 export default ({ app }: { app: Application }) => {
   app.get('/status', (req: Request, res: Response) => {
@@ -25,5 +24,5 @@ export default ({ app }: { app: Application }) => {
 
   app.use(bodyParser.json());
 
-  // app.use(prefix, routes())
+  app.use(prefix, routes());
 };

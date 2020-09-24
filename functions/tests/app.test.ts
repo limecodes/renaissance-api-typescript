@@ -28,3 +28,7 @@ afterEach(done => {
 test('Health check should be OK', () => {
   return agent.get('/status').expect(200);
 });
+
+test('Users endpoint should return OK', () => {
+  return agent.get('/api/v1/users/').expect(200);
+});
