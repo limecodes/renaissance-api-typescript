@@ -11,7 +11,9 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "test": "jest",
-    "test:staged": "jest --findRelatedTests"
+    "test:staged": "jest --findRelatedTests",
+    "config:init": "cd .. && ./scripts/init",
+    "config:update": "cd .. && ./scripts/init"
   },
   "engines": {
     "node": "12"
@@ -20,7 +22,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "firebase-admin": "^8.10.0",
-    "firebase-functions": "^3.6.1"
+    "firebase-functions": "^3.6.1",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@types/express": "^4.17.8",

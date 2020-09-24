@@ -1,3 +1,5 @@
 - [ ] Maybe have the basic stuff like nodemon, husky, lint-staged, etc... at the top level of the repo
 - [ ] Remember to remove the eslint ignore in `index.ts` file
 - [ ] Replace console.logs with logger
+- [ ] Eventually move project wide dev dependencies and scripts to root of repo
+- [ ] If doing config:update, update the script so that if it detects the database lines, it doesn't change them
