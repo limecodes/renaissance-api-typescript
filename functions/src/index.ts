@@ -1,3 +1,5 @@
+/* For now while I'm still setting up */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as functions from 'firebase-functions';
 
 // // Start writing Firebase Functions

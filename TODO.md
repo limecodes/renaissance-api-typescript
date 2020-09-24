@@ -1,1 +1,2 @@
-- Maybe have the basic stuff like nodemon, husky, lint-staged, etc... at the top level of the repo
+- [ ] Maybe have the basic stuff like nodemon, husky, lint-staged, etc... at the top level of the repo
+- [ ] Remember to remove the eslint ignore in `index.ts` file
