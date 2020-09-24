@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+
+import json
+import pipes
+import sys
+import random
+import string
+
+def generate_random_value(length):
+  letters = string.ascii_lowercase
+  return ''.join(random.choice(letters) for i in range(length))
+
+# Later, don't forget envApp
+env = envDocker = envDatabase = ""
+
+# Later, use a variable to select the environment for CI
+with open('./envs/docker/local') as fp:
+  envDocker = fp.read()
+
+with open('./envs/database/local') as fp:
+  envDatabase = fp.read()
+
+envDatabase += "MYSQL_ROOT_PASSWORD=%s\n" % (generate_random_value(15))
+envDatabase += "MYSQL_PASSWORD=%s\n" % (generate_random_value(15))
+
+env += envDocker
+env += envDatabase
+
+# Later, import the firebase certificate values
+
+with open('./.env', 'w') as fp:
+  fp.write(env)
