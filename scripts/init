@@ -31,6 +31,9 @@ env += envDatabase
 env += envApp
 
 # Later, import the firebase certificate values
+for k, v in json.load(sys.stdin).items():
+  k = pipes.quote(k)
+  env += "FIREBASE_%s=\'%s\'\n" % (k.upper(), v.encode('unicode_escape'))
 
 with open('./.env', 'w') as fp:
   fp.write(env)

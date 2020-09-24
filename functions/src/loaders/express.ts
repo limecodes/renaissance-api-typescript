@@ -1,4 +1,4 @@
-import { Application, Request, Response } from 'express';
+import { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
@@ -25,4 +25,18 @@ export default ({ app }: { app: Application }) => {
   app.use(bodyParser.json());
 
   app.use(prefix, routes());
+
+  app.use((err: any, req: Request, res: Response, next: NextFunction): void => {
+    if (err.name === 'UnauthorizedError') {
+      return res.status(err.status).send({ message: err.message }).end();
+    }
+    return next(err);
+  });
+
+  app.use((err: any, req: Request, res: Response, next: NextFunction): void => {
+    console.log('error handler');
+    res.status(err.status || 500);
+    res.json({ errors: { message: err.message } });
+    next();
+  });
 };
