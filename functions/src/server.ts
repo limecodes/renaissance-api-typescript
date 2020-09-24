@@ -1,16 +1,19 @@
 import express from 'express';
 
 import config from './config';
+import Logger from './loaders/logger';
 
-const { port } = config;
+const { port, env } = config;
 
 const startServer = async () => {
   const app = express();
 
   app
-    .listen(port, () => console.log(`listening on port ${port}`))
+    .listen(port, () =>
+      Logger.info(`listening on port ${port}, on environment ${env}`),
+    )
     .on('error', err => {
-      console.log('Something went wrong', err);
+      Logger.error(err);
       process.exit(1);
     });
 };
